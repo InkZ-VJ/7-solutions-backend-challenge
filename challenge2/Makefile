@@ -1,0 +1,3 @@
+ans:
+	go run .
+

@@ -1,5 +1,27 @@
 # backend-challenge
 
+Clone Repo
+```bash
+git clone https://github.com/InkZ-VJ/7-solutions-backend-challenge.git
+```
+
+## My Answers
+1. ### challenge1: จงหาเส้นทางที่มีค่ามากที่สุด
+```bash
+    cd challenge1
+    make ans
+```
+2. ### challenge2: จับฉันให้ได้สิ ซ้าย-ขวา-เท่ากับ
+```bash
+    cd ../challenge2
+    make ans
+```
+3. ### challenge3: พาย ไฟ ได - Pie Fire Dire  
+```bash
+    cd ../challenge3
+    make server
+```
+
 ## 1. จงหาเส้นทางที่มีค่ามากที่สุด
 
 ![Figure 1-1](files/max-path.png)
