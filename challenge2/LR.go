@@ -1,42 +1,51 @@
 package main
 
-// import (
-// 	"fmt"
-// 	"strconv"
-// )
+import (
+	"fmt"
+	"strconv"
+)
 
-func maxStack1(input string) (int, int) {
-	max_stack, max_index, count := 0, 0, 0
-	var top_stack rune
+func encode(input string) string {
+	var ans string
+	stage := make([]int, len(input)+1)
+	r := 0
+	stage[0] = 0
 
 	for i, s := range input {
-		if s == '=' {
+		j := i + 1
+		switch s {
+		case '=':
+			stage[j] = stage[j-1]
+
+		case 'R':
+			r = j // change to previous "R"
+			stage[j] = stage[j-1] + 1
+
+		case 'L':
+			stage[j] = 0
+			for n := j - 1; n > r; n-- {
+				stage[n]++
+			}
+			if stage[r+1] >= stage[r] {
+				stage[r]++
+			}
+		default:
 			continue
 		}
-		if count == 0 {
-			top_stack = s
-		}
-
-		// fmt.Println("string: ", strconv.QuoteRune(s))
-
-		switch s == top_stack {
-		case true:
-			count++
-		case false:
-			count--
-		}
-
-		// get only first max index
-		if count > max_stack {
-			max_stack = count
-			max_index = i
-		}
-
-		if count == 0 {
-			count++
-			top_stack = s
-		}
-		// fmt.Println("current top stack: ", strconv.QuoteRune(top_stack))
+		// fmt.Println(string(s), stage)
 	}
-	return max_index, max_stack
+	ans = sliceOfStringToString(stage)
+	fmt.Println("Encoded Answer: ", ans)
+
+	return ans
+}
+
+func sliceOfStringToString(stage []int) string {
+	var target string
+
+	for _, num := range stage {
+		s := strconv.Itoa(num) //Int to string
+		target += s
+	}
+	return target
 }

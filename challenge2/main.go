@@ -6,13 +6,18 @@ import (
 
 func main() {
 	testCases := []string{"LLRR=", "==RLL", "=LLRR", "RRL=R", "LLRLLR"}
-
-	// max_num := maxStack1(testCases[1])
-	// fmt.Println(max_num)
+	fmt.Println("===========Testing Example===========")
 
 	for _, test := range testCases {
-		max_index, max_num := maxStack1(test)
-		fmt.Printf("Input: '%s'  max number: %d max index: %d\n", test, max_num, max_index)
+		fmt.Println("Input: ", test)
+		_ = encode(test)
 	}
 
+	fmt.Println("===========Try It BY Yourself===========")
+	var input string
+	_, err := fmt.Scanln(&input)
+	if err != nil {
+		return
+	}
+	encode(input)
 }
